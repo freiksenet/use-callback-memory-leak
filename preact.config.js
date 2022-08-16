@@ -8,5 +8,13 @@
  * @param {Record<string, unknown>} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
  */
 export default (config, env, helpers, options) => {
-  config.optimization.minimizer = [];
+  const TerserPlugin = require("terser-webpack-plugin");
+
+  config.optimization.minimizer = [
+    new TerserPlugin({
+      terserOptions: {
+        mangle: false,
+      }
+    })
+  ];
 };
